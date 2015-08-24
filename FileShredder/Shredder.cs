@@ -108,9 +108,11 @@ namespace FileShredder
 
         protected string partFileName(byte index)
         {
-            string ret = 
+            string ret = (targetFolder.LastIndexOf(@"\") == targetFolder.Length - 1 ? targetFolder : targetFolder + Path.DirectorySeparatorChar) +
+                Path.GetFileName(sourceFile) + ".shrd" + index.ToString().PadLeft(3, '0');
+            /*string ret = 
                 Path.GetPathRoot(targetFolder) + Path.GetDirectoryName(targetFolder) + Path.DirectorySeparatorChar 
-                + Path.GetFileName(sourceFile) + ".shrd" + index.ToString().PadLeft(3, '0');
+                + Path.GetFileName(sourceFile) + ".shrd" + index.ToString().PadLeft(3, '0');*/
             return ret; 
         }
 
